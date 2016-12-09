@@ -1,0 +1,17 @@
+# folhar
+
+[![Travis-CI Build Status](https://travis-ci.org/dfalbel/folhar.svg?branch=master)](https://travis-ci.org/dfalbel/folhar)
+
+O objetivo deste pacote é fornecer algumas funções simples permitindo fazer
+webscrapping de notícias do site da Folha de São Paulo.
+
+## Instalação
+
+You can install folhar from github with:
+
+```R
+# install.packages("devtools")
+devtools::install_github("dfalbel/folhar")
+```
+
+
