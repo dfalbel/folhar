@@ -35,7 +35,52 @@ parse_folha <- function(url){
   dplyr::data_frame(
     datahora = datahora,
     titulo = titulo,
-    autor = autor,
+    autor = ifelse(length(autor) != 1, NA_character_, autor),
+    texto = texto
+  )
+}
+
+#' Faz parse das notícias com URL começando em:
+#' http://f5.folha.uol.com.br/
+#'
+#' @param url
+#'
+#' @examples
+#' url <- "http://f5.folha.uol.com.br/colunistas/tonygoes/2016/12/sao-paulo-precisa-descobrir-sua-propria-maneira-de-realizar-a-virada-cultural.shtml"
+#' noticia <- parse_f5(url)
+#'
+#' url <- "http://f5.folha.uol.com.br/celebridades/2016/12/por-que-a-atriz-mais-bem-paga-da-tv-americana-esta-sendo-processada-pelos-proprios-embrioes.shtml"
+#' noticia <- parse_f5(url)
+#'
+#' @export
+parse_f5 <- function(url){
+
+  noticia <- httr::GET(url) %>%
+    httr::content(encoding = "UTF-8")
+
+  datahora <- noticia %>%
+    rvest::html_nodes(".news .news__date-cover") %>%
+    rvest::html_text() %>%
+    lubridate::dmy_hms()
+
+  autor <- noticia %>%
+    rvest::html_nodes(".author__name") %>%
+    rvest::html_text() %>%
+    stringr::str_trim()
+
+  titulo <- noticia %>%
+    rvest::html_nodes(".news .news__title") %>%
+    rvest::html_text()
+
+  texto <- noticia %>%
+    rvest::html_nodes(".news .news__content p") %>%
+    rvest::html_text() %>%
+    paste(collapse = " ")
+
+  dplyr::data_frame(
+    datahora = datahora,
+    titulo = titulo,
+    autor = ifelse(length(autor) != 1, NA_character_, autor),
     texto = texto
   )
 }
