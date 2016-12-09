@@ -2,4 +2,5 @@
 
 export("%>%")
 export(folha_buscar)
+export(parse_folha)
 importFrom(magrittr,"%>%")
