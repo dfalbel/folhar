@@ -14,4 +14,9 @@ You can install folhar from github with:
 devtools::install_github("dfalbel/folhar")
 ```
 
+## Exemplo
 
+```R
+library(folhar)
+busca <- folha_buscar("estatistica", "01/11/2016", "05/12/2016")
+```
