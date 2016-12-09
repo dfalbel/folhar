@@ -1,0 +1,19 @@
+Package: folhar
+Type: Package
+Title: Webscrapping Portal da Folha de SP
+Version: 0.0.1.9000
+Author: Daniel Falbel
+Maintainer: Daniel Falbel <dfalbel@gmail.com>
+Description: Pacote para fazer download de notícias do site da Folha de SP.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: TRUE
+RoxygenNote: 5.0.1
+Imports: httr,
+    rvest,
+    lubridate,
+    dplyr,
+    stringr,
+    purrr,
+    readr,
+    magrittr
