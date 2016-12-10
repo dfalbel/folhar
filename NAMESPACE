@@ -2,7 +2,9 @@
 
 export("%>%")
 export(folha_buscar)
+export(folha_noticias)
 export(parse_agora)
 export(parse_f5)
 export(parse_folha)
+export(parse_noticia)
 importFrom(magrittr,"%>%")

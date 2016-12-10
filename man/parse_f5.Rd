@@ -21,5 +21,6 @@ noticia <- parse_f5(url)
 url <- "http://f5.folha.uol.com.br/celebridades/2016/12/por-que-a-atriz-mais-bem-paga-da-tv-americana-esta-sendo-processada-pelos-proprios-embrioes.shtml"
 noticia <- parse_f5(url)
 
+
 }
 

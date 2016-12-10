@@ -52,6 +52,7 @@ parse_folha <- function(url){
 #' url <- "http://f5.folha.uol.com.br/celebridades/2016/12/por-que-a-atriz-mais-bem-paga-da-tv-americana-esta-sendo-processada-pelos-proprios-embrioes.shtml"
 #' noticia <- parse_f5(url)
 #'
+#'
 #' @export
 parse_f5 <- function(url){
 
@@ -126,4 +127,61 @@ parse_agora <- function(url){
     autor = ifelse(length(autor) != 1, NA_character_, autor),
     texto = texto
   )
+}
+
+#' Parse Noticia
+#'
+#' Faz parse de uma notícia. Escolhe a função adequada, dependendo da URL.
+#'
+#' @param url url da notícia
+#'
+#' @examples
+#' url <- "http://www.agora.uol.com.br/saopaulo/2016/12/1839811-mortes-em-marginais-ocorrem-com-motos-nas-pistas-locais.shtml"
+#' parse_noticia(url)
+#'
+#' url <- "http://www1.folha.uol.com.br/mundo/2016/11/1830974-americanos-insatisfeitos-protestam-contra-vitoria-de-trump-em-eleicoes.shtml"
+#' parse_noticia(url)
+#'
+#' url <- "http://f5.folha.uol.com.br/colunistas/tonygoes/2016/12/sao-paulo-precisa-descobrir-sua-propria-maneira-de-realizar-a-virada-cultural.shtml"
+#' noticia <- parse_noticia(url)
+#'
+#' url <- "http://f5.folha.uol.com.br/celebridades/2016/12/por-que-a-atriz-mais-bem-paga-da-tv-americana-esta-sendo-processada-pelos-proprios-embrioes.shtml"
+#' noticia <- parse_noticia(url)
+#'
+#' @export
+parse_noticia <- function(url){
+
+  fun_parse <-  dplyr::case_when(
+    stringr::str_detect(url, "http://f5.folha.uol.com.br/") ~ "parse_f5",
+    stringr::str_detect(url, "http://www.agora.uol.com.br/") ~ "parse_agora",
+    stringr::str_detect(url, "http://www1.folha.uol.com.br/") ~  "parse_folha"
+  )
+
+  if(is.na(fun_parse)) return(NULL)
+
+  fun_parse <- switch (fun_parse,
+    parse_agora = parse_agora,
+    parse_f5 = parse_f5,
+    parse_folha = parse_folha
+  )
+
+  fun_parse(url)
+}
+
+#' Obter mais infos das notícias.
+#'
+#' @param urls vetor de urls para os quais deseja-se obter mais informações.
+#'
+#' @examples
+#' urls <- c(
+#'  "http://www1.folha.uol.com.br/mundo/2016/11/1830974-americanos-insatisfeitos-protestam-contra-vitoria-de-trump-em-eleicoes.shtml",
+#'  "http://f5.folha.uol.com.br/colunistas/tonygoes/2016/12/sao-paulo-precisa-descobrir-sua-propria-maneira-de-realizar-a-virada-cultural.shtml",
+#'  "http://f5.folha.uol.com.br/celebridades/2016/12/por-que-a-atriz-mais-bem-paga-da-tv-americana-esta-sendo-processada-pelos-proprios-embrioes.shtml",
+#'  "http://www.agora.uol.com.br/saopaulo/2016/12/1839811-mortes-em-marginais-ocorrem-com-motos-nas-pistas-locais.shtml"
+#'  )
+#' noticias <- folha_noticias(urls)
+#'
+#' @export
+folha_noticias <- function(urls){
+  purrr::map_df(urls, parse_noticia)
 }
