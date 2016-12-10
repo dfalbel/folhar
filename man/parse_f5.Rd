@@ -8,7 +8,7 @@ http://f5.folha.uol.com.br/}
 parse_f5(url)
 }
 \arguments{
-\item{url}{}
+\item{url}{url da noticia}
 }
 \description{
 Faz parse das notícias com URL começando em:

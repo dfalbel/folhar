@@ -20,3 +20,8 @@ devtools::install_github("dfalbel/folhar")
 library(folhar)
 busca <- folha_buscar("estatistica", "01/11/2016", "05/12/2016")
 ```
+
+## Encontrou algum problema?
+
+Para alguma notícia o parser funcionou mal? Ficou faltando alguma informação que 
+você precisava? Reporte [aqui](https://github.com/dfalbel/folhar)!
