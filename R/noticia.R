@@ -33,6 +33,7 @@ parse_folha <- function(url){
     paste(collapse = " ")
 
   dplyr::data_frame(
+    url = url,
     datahora = datahora,
     titulo = titulo,
     autor = ifelse(length(autor) != 1, NA_character_, autor),
@@ -79,6 +80,7 @@ parse_f5 <- function(url){
     paste(collapse = " ")
 
   dplyr::data_frame(
+    url = url,
     datahora = datahora,
     titulo = titulo,
     autor = ifelse(length(autor) != 1, NA_character_, autor),
@@ -122,6 +124,7 @@ parse_agora <- function(url){
     paste(collapse = " ")
 
   dplyr::data_frame(
+    url = url,
     datahora = datahora,
     titulo = titulo,
     autor = ifelse(length(autor) != 1, NA_character_, autor),
