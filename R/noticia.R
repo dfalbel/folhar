@@ -160,7 +160,10 @@ parse_noticia <- function(url){
     stringr::str_detect(url, "http://www1.folha.uol.com.br/") ~  "parse_folha"
   )
 
-  if(is.na(fun_parse)) return(NULL)
+  if(is.na(fun_parse)){
+    message("Parse indefinido para esta noticia. Retornando vazio (NULL)")
+    return(NULL)
+  }
 
   fun_parse <- switch (fun_parse,
     parse_agora = parse_agora,
