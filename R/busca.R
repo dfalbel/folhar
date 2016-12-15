@@ -71,8 +71,8 @@ parse_busca <- function(x){
     rvest::html_nodes("li")
 
   link <- lista %>%
-    rvest::html_nodes(".url") %>%
-    rvest::html_text()
+    rvest::html_nodes(".search-results-title > a") %>%
+    rvest::html_attr("href")
 
   trecho <- lista %>%
     rvest::html_nodes(".content") %>%
