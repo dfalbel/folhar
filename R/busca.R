@@ -40,9 +40,15 @@ buscar <- function(q, sd, ed, max_r = 100, wt = 1){
 
   itens <- max_itens(consulta)
 
-  if(itens > max_r){
-    message(sprintf("A busca retornou %f registros, mas vamos retornar %f", itens, max))
+  if(length(itens) == 0){
+    message("A busca não retornou resultados. Usou palavras com acentos? Retornando lista vazia")
+    return(list())
   }
+
+  if(itens > max_r){
+    message(sprintf("A busca retornou %d registros, mas vamos retornar %d", itens, max_r))
+  }
+
 
   max_r <- min(max_r, itens)
   iter <- max_r %/% 25
