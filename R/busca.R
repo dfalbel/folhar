@@ -41,7 +41,7 @@ buscar <- function(q, sd, ed, max_r = 100, wt = 1){
   itens <- max_itens(consulta)
 
   if(length(itens) == 0){
-    message("A busca não retornou resultados. Usou palavras com acentos? Retornando lista vazia")
+    message("A busca nao retornou resultados. Usou palavras com acentos? Retornando lista vazia")
     return(list())
   }
 
