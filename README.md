@@ -1,6 +1,7 @@
 # folhar
 
 [![Travis-CI Build Status](https://travis-ci.org/dfalbel/folhar.svg?branch=master)](https://travis-ci.org/dfalbel/folhar)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/NA/NA?branch=master&svg=true)](https://ci.appveyor.com/project/dfalbel/folhar)
 
 O objetivo deste pacote é fornecer algumas funções simples permitindo fazer
 webscrapping de notícias do site da Folha de São Paulo.
