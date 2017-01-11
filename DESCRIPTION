@@ -1,7 +1,7 @@
 Package: folhar
 Type: Package
 Title: Webscrapping Portal da Folha de SP
-Version: 0.0.1.9000
+Version: 0.0.1
 Author: Daniel Falbel
 Maintainer: Daniel Falbel <dfalbel@gmail.com>
 Description: Pacote para fazer download de notícias do site da Folha de SP.
